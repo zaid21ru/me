@@ -91,70 +91,74 @@ def re(message):
    	bot.reply_to(message, f"<strong>صلِ على محمد والَ محمد</strong>",parse_mode="html",reply_markup=key)
    	
    	
-  elif 'سلفادور' or 'سلفا'in text:
+  elif 'سلفادور' in text:
   	o=['تأج راسك','هسه يجي','لا تصيح على ابي','ابي نأئم','سلفادور عمك','هسه يجي سلفا','شتريد منه ؟','نصي صوت هسه يجي سلفا','لا تلح هسه يرد']
   	dn=random.choice(o)
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
-  elif 'حساب' or 'حسابات'in text:
-  	gh=['حراام تسرق حسابات ','لاحد يشوف الحساب']
-  	dn=random.choice(gh)
+  elif 'سلفا' in text:
+  	o=['تأج راسك','هسه يجي','لا تصيح على ابي','ابي نأئم','سلفادور عمك','هسه يجي سلفا','شتريد منه ؟','نصي صوت هسه يجي سلفا','لا تلح هسه يرد']
+  	dn=random.choice(o)
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
+
   elif 'زيد'  or 'zaid' in text:
   	if 'zaid' in text:
-  		ch = text.split('zaid ')[1]
-  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
-  		head = {
-	    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
-	    'Connection': 'keep-alive',
-	    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
-	    'Accept': '*/*',
-	    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
-	    'Content-Type': 'application/json',
-	    'Accept-Language': 'en-GB,en;q=0.9'}
-	    
-  		data = {
-	    'data': {
-	        'message':ch,
-	    }
-	}   
-  		response = requests.post(url, headers=head, data=json.dumps(data))
   		try:
-  			result = response.json()["result"]["choices"][0]["text"]
-  			key = types.InlineKeyboardMarkup()
-  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
-  		except:
-  			key = types.InlineKeyboardMarkup()
-  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)
+	  		ch = text.split('zaid ')[1]
+	  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
+	  		head = {
+		    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
+		    'Connection': 'keep-alive',
+		    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
+		    'Accept': '*/*',
+		    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
+		    'Content-Type': 'application/json',
+		    'Accept-Language': 'en-GB,en;q=0.9'}
+		    
+	  		data = {
+		    'data': {
+		        'message':ch,
+		    }
+		}   
+	  		response = requests.post(url, headers=head, data=json.dumps(data))
+	  		try:
+	  			result = response.json()["result"]["choices"][0]["text"]
+	  			key = types.InlineKeyboardMarkup()
+	  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
+	  		except:
+	  			key = types.InlineKeyboardMarkup()
+	  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)
+  		except:pass
   	elif 'زيد' in text:
-  		ch = text.split('زيد ')[1]
-  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
-  		head = {
-	    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
-	    'Connection': 'keep-alive',
-	    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
-	    'Accept': '*/*',
-	    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
-	    'Content-Type': 'application/json',
-	    'Accept-Language': 'en-GB,en;q=0.9'}
-	    
-  		data = {
-	    'data': {
-	        'message':ch,
-	    }
-	}   
-  		response = requests.post(url, headers=head, data=json.dumps(data))
   		try:
-  			result = response.json()["result"]["choices"][0]["text"]
-  			key = types.InlineKeyboardMarkup()
-  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
-  		except:
-  			key = types.InlineKeyboardMarkup()
-  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)		
+	  		ch = text.split('زيد ')[1]
+	  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
+	  		head = {
+		    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
+		    'Connection': 'keep-alive',
+		    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
+		    'Accept': '*/*',
+		    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
+		    'Content-Type': 'application/json',
+		    'Accept-Language': 'en-GB,en;q=0.9'}
+		    
+	  		data = {
+		    'data': {
+		        'message':ch,
+		    }
+		}   
+	  		response = requests.post(url, headers=head, data=json.dumps(data))
+	  		try:
+	  			result = response.json()["result"]["choices"][0]["text"]
+	  			key = types.InlineKeyboardMarkup()
+	  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
+	  		except:
+	  			key = types.InlineKeyboardMarkup()
+	  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)
+  		except:pass		
   else:
   	pass
-
 while True :
     try:
         bot.infinity_polling()
