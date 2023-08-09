@@ -1,446 +1,160 @@
 import requests 
 import telebot 
 from telebot import types
-import requests
-from uuid import uuid4
 import random
-import os
 import json
-from user_agent import generate_user_agent
-import sys
-from datetime import datetime
-from bs4 import BeautifulSoup
-import datetime
-key = types.InlineKeyboardMarkup()
 
-zzk=0
-id = '5000568348'
-tok = '6370336437:AAG32-nIXIguOOh4MoYgx793doR1zZMXMTU'
+key = types.InlineKeyboardMarkup()
 import datetime
 zxu = datetime.datetime.now()
+tok ='6370336437:AAG32-nIXIguOOh4MoYgx793doR1zZMXMTU'
+
+ida = '5000568348'
 bot = telebot.TeleBot(tok)
-@bot.message_handler(commands=['start'])
-def start(message):
- global zzk
- zzk+=1
- nm = message.from_user.first_name
- id2 = message.from_user.id
- userk = message.from_user.username
- zxu = datetime.datetime.now()
- tt=f'''
-عضو يستخدم البوت…
-ـــــــــــــــــــــــــــــــــــــــ
-اسم المستخدم : {nm}
-يوزر المستخدم : @{userk}
-ايدي المستخدم : {id2}
-رقم المستخدم  : {zzk}
-الوقت : {zxu}
-ـــــــــــــــــــــــــــــــــــــــ
-ـ @P_W_7'''
-
- key = types.InlineKeyboardMarkup()
- bot.send_message(id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)
- 
-
- 
- zek = types.InlineKeyboardButton(text ="صيـد نوع | x_x_x |", callback_data = 'oq')
- zed = types.InlineKeyboardButton(text ="صيـد نوع | x_x.x |", callback_data = 'om')
-
- ze = types.InlineKeyboardButton(text ="صيـد نوع | x.x_x |", callback_data = 'og')
-  
- zn = types.InlineKeyboardButton(text ="صيـد نوع شبه رباعي", callback_data = 'oh')
-  
- fr = message.from_user.first_name
- maac = types.InlineKeyboardMarkup()
- maac.row_width=1
- maac.add(zek,zed,ze,zn)
- bot.send_message(message.chat.id,f"<strong>اهلا بك : | {fr} | في بـوت صيـد يوزرات انستكـرام للحصول على معلوماتك [ /info ]</strong>",parse_mode="html",reply_markup=maac)
-@bot.callback_query_handler(func=lambda call:True)
-def st(call):
- 
- 
- if call.data== 'oq':
-            nc1 = types.InlineKeyboardMarkup(row_width=2)
-            message= bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text='ارسـل عدد محاولات الفـحص',reply_markup=nc1)
-            bot.register_next_step_handler(message,k1,message.id)
-
- elif call.data== 'om':
-            nc1 = types.InlineKeyboardMarkup(row_width=2)
-            message= bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text='ارسـل عدد محاولات الفـحص',reply_markup=nc1)
-            bot.register_next_step_handler(message,k2,message.id)
-
- elif call.data== 'og':
-            nc1 = types.InlineKeyboardMarkup(row_width=2)
-            message= bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text='ارسـل عدد محاولات الفـحص',reply_markup=nc1)
-            bot.register_next_step_handler(message,k3,message.id)
-
- elif call.data== 'oh':
-            nc1 = types.InlineKeyboardMarkup(row_width=2)
-            message= bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text='ارسـل عدد محاولات الفـحص',reply_markup=nc1)
-            bot.register_next_step_handler(message,k4,message.id)
-      
-                      
-def k1(message,id):
-	z=0
-	bad=0
-	good=0
-	try:
-		add = int(message.text)
-		if add < 5000:
-			while True:
-				z+=1
-				u = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				d = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				s = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				user = u+'_'+d+'_'+s
-				url = "https://i.instagram.com/api/v1/accounts/create/"
-				he = {
-	'Content-Length': '437',
-	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	'Host': 'i.instagram.com',
-	'Connection': 'Keep-Alive',
-	'User-Agent': 'Instagram 113.0.0.39.122 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
-	'Cookie': 'mid=Y16iBgABAAFggfUYwajggkGFz-hs',
-	'Cookie2': '$Version=1',
-	'Accept-Language': 'en-IQ, en-US',
-	'X-IG-Connection-Type': 'WIFI',
-	'X-IG-Capabilities': 'AQ==',
-	'Accept-Encoding': 'gzip',}
-				da = {
-"email":"zodhok@gmail.com",
-"username":f"{user}",
-"password":"zxcvbm1@"+user,
-"device_id":"android-"+str(uuid4()),
-"guid":str(uuid4()),
-	 	}
-				rr = requests.post(url,headers=he,data=da).text
-				if "username" in rr:
-					bad+=1
-				elif 'email_is_taken' in rr:
-					good+=1
-					tt = f"""
-Done get User successfully
-═══════════════════
-Username : {user}
-	═══════════════════
-Programmer  : @P_W_7
-	"""
-					bot.send_message(message.chat.id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)					
-				else:
-					bad+=1
-					
-				mees = types.InlineKeyboardMarkup(row_width=1)
-				ba12=types.InlineKeyboardButton(f" 📜 Check User Instagram",callback_data='b12')
-				ba8=types.InlineKeyboardButton(f" ⏱️ Add : {add} > {z}",callback_data='b8')
-				ba11=types.InlineKeyboardButton(f" ✅ Good Username : {good}",callback_data='b11')
-				ba10=types.InlineKeyboardButton(f" ❌ Good Username : {bad}",callback_data='b10')
-				ba9=types.InlineKeyboardButton(f" 🔍 check Username : {user}",callback_data='b9')
-				mees.add(ba12,ba8,ba11,ba10,ba9)
-				bot.edit_message_text(chat_id=message.chat.id,message_id=id,text="بدأ صيـد يوزرات انستكرام",parse_mode='markdown',reply_markup=mees)
-				
-				if z == add:
-					bot.send_message(message.chat.id, f"<strong>لقـد انتهاء عدد محاولات الفحـض</strong>",parse_mode="html",reply_markup=key)
-					return
-					
-		else:
-			bot.send_message(message.chat.id, f"<strong>لا يمكن فحص اكثـر من 5000 😒</strong>",parse_mode="html",reply_markup=key)				
-	except:
-		bot.send_message(message.chat.id, f"<strong>هنـاك خطـأ ما </strong>",parse_mode="html",reply_markup=key)
-
-def k2(message,id):
-	z=0
-	bad=0
-	good=0
-	try:
-		add = int(message.text)
-		if add < 5000:
-			while True:
-				z+=1
-				u = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				d = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				s = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				user = u+'_'+d+'.'+s
-				url = "https://i.instagram.com/api/v1/accounts/create/"
-				he = {
-	'Content-Length': '437',
-	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	'Host': 'i.instagram.com',
-	'Connection': 'Keep-Alive',
-	'User-Agent': 'Instagram 113.0.0.39.122 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
-	'Cookie': 'mid=Y16iBgABAAFggfUYwajggkGFz-hs',
-	'Cookie2': '$Version=1',
-	'Accept-Language': 'en-IQ, en-US',
-	'X-IG-Connection-Type': 'WIFI',
-	'X-IG-Capabilities': 'AQ==',
-	'Accept-Encoding': 'gzip',}
-				da = {
-"email":"zodhok@gmail.com",
-"username":f"{user}",
-"password":"zxcvbm1@"+user,
-"device_id":"android-"+str(uuid4()),
-"guid":str(uuid4()),
-	 	}
-				rr = requests.post(url,headers=he,data=da).text
-				if "username" in rr:
-					bad+=1
-				elif 'email_is_taken' in rr:
-					good+=1
-					tt = f"""
-Done get User successfully
-═══════════════════
-Username : {user}
-	═══════════════════
-Programmer  : @P_W_7
-	"""
-					bot.send_message(message.chat.id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)					
-				else:
-					bad+=1
-					
-				mees = types.InlineKeyboardMarkup(row_width=1)
-				ba12=types.InlineKeyboardButton(f" 📜 Check User Instagram",callback_data='b12')
-				ba8=types.InlineKeyboardButton(f" ⏱️ Add : {add} > {z}",callback_data='b8')
-				ba11=types.InlineKeyboardButton(f" ✅ Good Username : {good}",callback_data='b11')
-				ba10=types.InlineKeyboardButton(f" ❌ Good Username : {bad}",callback_data='b10')
-				ba9=types.InlineKeyboardButton(f" 🔍 check Username : {user}",callback_data='b9')
-				mees.add(ba12,ba8,ba11,ba10,ba9)
-				bot.edit_message_text(chat_id=message.chat.id,message_id=id,text="بدأ صيـد يوزرات انستكرام",parse_mode='markdown',reply_markup=mees)
-				
-				if z == add:
-					bot.send_message(message.chat.id, f"<strong>لقـد انتهاء عدد محاولات الفحـض</strong>",parse_mode="html",reply_markup=key)
-					return
-					
-		else:
-			bot.send_message(message.chat.id, f"<strong>لا يمكن فحص اكثـر من 5000 😒</strong>",parse_mode="html",reply_markup=key)				
-	except:
-		bot.send_message(message.chat.id, f"<strong>هنـاك خطـأ ما </strong>",parse_mode="html",reply_markup=key)
-		
-
-def k3(message,id):
-	z=0
-	bad=0
-	good=0
-	try:
-		add = int(message.text)
-		if add < 5000:
-			while True:
-				z+=1
-				u = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				d = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				s = "".join(random.choice('1234567890qwertyuiopasdfghjklzxcvbnm')for i in range(1))
-				user = u+'.'+d+'_'+s
-				url = "https://i.instagram.com/api/v1/accounts/create/"
-				he = {
-	'Content-Length': '437',
-	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	'Host': 'i.instagram.com',
-	'Connection': 'Keep-Alive',
-	'User-Agent': 'Instagram 113.0.0.39.122 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
-	'Cookie': 'mid=Y16iBgABAAFggfUYwajggkGFz-hs',
-	'Cookie2': '$Version=1',
-	'Accept-Language': 'en-IQ, en-US',
-	'X-IG-Connection-Type': 'WIFI',
-	'X-IG-Capabilities': 'AQ==',
-	'Accept-Encoding': 'gzip',}
-				da = {
-"email":"zodhok@gmail.com",
-"username":f"{user}",
-"password":"zxcvbm1@"+user,
-"device_id":"android-"+str(uuid4()),
-"guid":str(uuid4()),
-	 	}
-				rr = requests.post(url,headers=he,data=da).text
-				if "username" in rr:
-					bad+=1
-				elif 'email_is_taken' in rr:
-					good+=1
-					tt = f"""
-Done get User successfully
-═══════════════════
-Username : {user}
-	═══════════════════
-Programmer  : @P_W_7
-	"""
-					bot.send_message(message.chat.id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)					
-				else:
-					bad+=1
-					
-				mees = types.InlineKeyboardMarkup(row_width=1)
-				ba12=types.InlineKeyboardButton(f" 📜 Check User Instagram",callback_data='b12')
-				ba8=types.InlineKeyboardButton(f" ⏱️ Add : {add} > {z}",callback_data='b8')
-				ba11=types.InlineKeyboardButton(f" ✅ Good Username : {good}",callback_data='b11')
-				ba10=types.InlineKeyboardButton(f" ❌ Good Username : {bad}",callback_data='b10')
-				ba9=types.InlineKeyboardButton(f" 🔍 check Username : {user}",callback_data='b9')
-				mees.add(ba12,ba8,ba11,ba10,ba9)
-				bot.edit_message_text(chat_id=message.chat.id,message_id=id,text="بدأ صيـد يوزرات انستكرام",parse_mode='markdown',reply_markup=mees)
-				
-				if z == add:
-					bot.send_message(message.chat.id, f"<strong>لقـد انتهاء عدد محاولات الفحـض</strong>",parse_mode="html",reply_markup=key)
-					return
-					
-		else:
-			bot.send_message(message.chat.id, f"<strong>لا يمكن فحص اكثـر من 5000 😒</strong>",parse_mode="html",reply_markup=key)				
-	except:
-		bot.send_message(message.chat.id, f"<strong>هنـاك خطـأ ما </strong>",parse_mode="html",reply_markup=key)
-		
-			
-def k4(message,id):
-	z=0
-	bad=0
-	good=0
-	try:
-		add = int(message.text)
-		if add < 5000:
-			while True:
-				z+=1
-				user = "".join(random.choice('123456_78_90q_wert_yu_iop_asdfghjklz_xcvb.nm')for i in range(5))
-				url = "https://i.instagram.com/api/v1/accounts/create/"
-				he = {
-	'Content-Length': '437',
-	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-	'Host': 'i.instagram.com',
-	'Connection': 'Keep-Alive',
-	'User-Agent': 'Instagram 113.0.0.39.122 Android (30/11; 480dpi; 1080x2298; HONOR; ANY-LX2; HNANY-Q1; qcom; en_IQ)',
-	'Cookie': 'mid=Y16iBgABAAFggfUYwajggkGFz-hs',
-	'Cookie2': '$Version=1',
-	'Accept-Language': 'en-IQ, en-US',
-	'X-IG-Connection-Type': 'WIFI',
-	'X-IG-Capabilities': 'AQ==',
-	'Accept-Encoding': 'gzip',}
-				da = {
-"email":"zodhok@gmail.com",
-"username":f"{user}",
-"password":"zxcvbm1@"+user,
-"device_id":"android-"+str(uuid4()),
-"guid":str(uuid4()),
-	 	}
-				rr = requests.post(url,headers=he,data=da).text
-				if "username" in rr:
-					bad+=1
-				elif 'email_is_taken' in rr:
-					good+=1
-					tt = f"""
-Done get User successfully
-═══════════════════
-Username : {user}
-	═══════════════════
-Programmer  : @P_W_7
-	"""
-					bot.send_message(message.chat.id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)					
-				else:
-					bad+=1
-					
-				mees = types.InlineKeyboardMarkup(row_width=1)
-				ba12=types.InlineKeyboardButton(f" 📜 Check User Instagram",callback_data='b12')
-				ba8=types.InlineKeyboardButton(f" ⏱️ Add : {add} > {z}",callback_data='b8')
-				ba11=types.InlineKeyboardButton(f" ✅ Good Username : {good}",callback_data='b11')
-				ba10=types.InlineKeyboardButton(f" ❌ Good Username : {bad}",callback_data='b10')
-				ba9=types.InlineKeyboardButton(f" 🔍 check Username : {user}",callback_data='b9')
-				mees.add(ba12,ba8,ba11,ba10,ba9)
-				bot.edit_message_text(chat_id=message.chat.id,message_id=id,text="بدأ صيـد يوزرات انستكرام",parse_mode='markdown',reply_markup=mees)
-				
-				if z == add:
-					bot.send_message(message.chat.id, f"<strong>لقـد انتهاء عدد محاولات الفحـض</strong>",parse_mode="html",reply_markup=key)
-					return
-					
-		else:
-			bot.send_message(message.chat.id, f"<strong>لا يمكن فحص اكثـر من 5000 😒</strong>",parse_mode="html",reply_markup=key)				
-	except:
-		bot.send_message(message.chat.id, f"<strong>هنـاك خطـأ ما </strong>",parse_mode="html",reply_markup=key)
-		
-						
-@bot.message_handler(commands=["info"])
-def inf(message):
-    global zzk
-    zzk+=1
-    zxu = datetime.datetime.now()
+#معلوماتي
+@bot.message_handler(func=lambda followinG:True )
+def re(message):
+  text = message.text
+  id = message.chat.id
+  if 'تعليمات' in text:
+  	key = types.InlineKeyboardMarkup()
+  	f="""
+1- للتقيد : تقيد + ايديه
+2- لفك التقيد : فك +ايديه
+3- لمعلومات حسابك : معلوماتي
+4- لمعرفه رتبتك - رتبتي
+"""
+  	bot.reply_to(message, f"<strong>{f}</strong>",parse_mode="html",reply_markup=key)
+  elif 'تقيد' in text:
+  	try:
+	  	idf = message.from_user.id
+	  	if int(ida) == int(idf):
+		  	ch = text.split('تقيد ')[1]
+		  	bot.restrict_chat_member(id, ch, can_send_messages=False)
+		  	key = types.InlineKeyboardMarkup()
+		  	bot.reply_to(message, f"<strong>قيدته</strong>",parse_mode="html",reply_markup=key)
+	  	else:
+	  		key = types.InlineKeyboardMarkup()
+	  		bot.reply_to(message, f"<strong>انت لست المدير</strong>",parse_mode="html",reply_markup=key)
+  	except:pass	  	
+  elif 'فك' in text:
+  	try:
+	  	if int(ida) == int(idf):
+		  	ch = text.split('فك ')[1]
+		  	bot.restrict_chat_member(id, ch, can_send_messages=True)
+		  	key = types.InlineKeyboardMarkup()
+		  	bot.reply_to(message, f"<strong>تم رفعت القيود</strong>",parse_mode="html",reply_markup=key)
+		  	
+	  	else:
+	  		key = types.InlineKeyboardMarkup()
+	  		bot.reply_to(message, f"<strong>انت لست المدير</strong>",parse_mode="html",reply_markup=key)
+  	except:pass	  		
+  elif 'معلوماتي' in text:
     nm = message.from_user.first_name
     id2 = message.from_user.id
     userk = message.from_user.username
     bio = bot.get_chat(message.from_user.id).bio
     
-    ttg=f'''
-رتبتك هي عضو 🥰 
+    ttg=f''' 
+معلومات الوصخ وصلت
 ـــــــــــــــــــــــــــــــــــــــ
 اسم المستخدم : {nm}
 يوزر المستخدم : @{userk}
 ايدي المستخدم : {id2}
-رقم المستخدم  : {zzk}
 الوقت : {zxu}
 بايو المستخدم : {bio}
-ـــــــــــــــــــــــــــــــــــــــ
-ـ @P_W_7'''
+ـــــــــــــــــــــــــــــــــــــــ'''
     key = types.InlineKeyboardMarkup()
-    bot.send_message(message.chat.id, f"<strong>{ttg}</strong>",parse_mode="html",reply_markup=key) 	
+    bot.reply_to(message, f"<strong>{ttg}</strong>",parse_mode="html",reply_markup=key)
+ 
+  elif 'رتبتي' in text:
+  	idf = message.from_user.id
+  	if int(ida) == int(idf):
+  		mo=['المدير العسل ✨','صأحب احلى ضحكه ✨','القائد 🦅','المدير الصاك😍','المعدل🔥','الهيبه🌚','المدير الشمع ❤️‍🔥','المنور دائماً🖤','المدير الورد🥀']
+  		dr = random.choice(mo)
+  		key = types.InlineKeyboardMarkup()
+  		bot.reply_to(message, f"<strong>{dr}</strong>",parse_mode="html",reply_markup=key)
+  	else:
+  		rm = ['زربه مدري شني','ابو صماخ','كـس عـجوز','طفل جني ✨','الجلب النغل','نعال حمام الكروب','العريض','الفاهي','العـاهره','زب الهاشه','صأحب المؤخره ذهبيبه✨','حصان ميت','كلب ابن خوش بشر','طلقه','ابو زرف✨','الكافر🙂','انته سلفا حطه بيك','الغبي','الشاخط','شحاطه','نعال',"زربه مال بشر",'بوله مال صخل','كـس جني','خريه','عيران اثنان','نيااج','مفتوح مابيك خير','مطي مكصوص اذانه','وحش مجاري','اجيف البشر','خيسه','مطلقه','ابو لباس','حيوان نادر جدأ','حمار وحشي','ابو طيـز المعضل','هواي ضرط','كـس جاموسه','المحترم✨','الـطيف','العسـل✨','المفترس✨','المبرمج القوي','خادم للتواليت','راس البريج','اسوء ماخلق✨','حيوان الليف','حيوان مفترس','بريعصي بي سكر','قرد بي فلاوزنه','تمساح مجاري','تاج راسكم✨','كاضم الساهر✨','هيفا وهبي مصلخه','العضيم✨','انته مو ميت؟','عبالي متت😓','رتبتك بل حاويه','حالك حال صطل','رتبتك العافيه','كـس خروف','مايا خليفه','النمر الوردي','صاحب اكبر مؤخره','لاحس الارجل','زعطووط','زعطوط','المابيك حض','المحمض','زواع نمر','زواع حامل','البربوك','البقره الضاحكه🔥','الحقير😠','شغلك وراه 12🥺','صطل لبن','كـس عجل','المخربط','زمال🙂','مثيل ديس زلمه ماتفيد بشي😓','ابو ديوس','صأحب اعضم طيز']
+  		dn = random.choice(rm)
+  		key = types.InlineKeyboardMarkup()
+  		bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
 
+  elif 'ابن' in text:
+  	key = types.InlineKeyboardMarkup()
+  	bot.reply_to(message, f"<strong>نعم انا موجود🤷🏻‍♂️</strong>",parse_mode="html",reply_markup=key)
+  elif 'بوت' in text:
+  	key = types.InlineKeyboardMarkup()
+  	bot.reply_to(message, f"<strong>احم احد صأحلي بوت؟🕺🏻</strong>",parse_mode="html",reply_markup=key)
+  elif 'جميل' or 'حلو' or 'رائع'in text:
+   	key = types.InlineKeyboardMarkup()
+   	bot.reply_to(message, f"<strong>صلِ على محمد والَ محمد</strong>",parse_mode="html",reply_markup=key)
+  elif 'سلفادور' or 'سلفا'in text:
+  	o=['تأج راسك','هسه يجي','لا تصيح على ابي','ابي نأئم','سلفادور عمك','هسه يجي سلفا','شتريد منه ؟','نصي صوت هسه يجي سلفا','لا تلح هسه يرد']
+  	dn=random.choice(o)
+  	key = types.InlineKeyboardMarkup()
+  	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
+  elif 'حساب' or 'حسابات'in text:
+  	gh=['حراام تسرق حسابات ','لاحد يشوف الحساب']
+  	dn=random.choice(gh)
+  	key = types.InlineKeyboardMarkup()
+  	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
+  elif 'زيد'  or 'zaid'in text:
+  	if 'zaid' in text:
+  		ch = text.split('zaid ')[1]
+  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
+  		head = {
+	    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
+	    'Connection': 'keep-alive',
+	    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
+	    'Accept': '*/*',
+	    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
+	    'Content-Type': 'application/json',
+	    'Accept-Language': 'en-GB,en;q=0.9'}
+	    
+  		data = {
+	    'data': {
+	        'message':ch,
+	    }
+	}   
+  		response = requests.post(url, headers=head, data=json.dumps(data))
+  		try:
+  			result = response.json()["result"]["choices"][0]["text"]
+  			key = types.InlineKeyboardMarkup()
+  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
+  		except:
+  			key = types.InlineKeyboardMarkup()
+  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)
+  	elif 'زيد' in text:
+  		ch = text.split('زيد ')[1]
+  		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
+  		head = {
+	    'Host': 'us-central1-chat-for-chatgpt.cloudfunctions.net',
+	    'Connection': 'keep-alive',
+	    'If-None-Match': 'W/"1c3-Up2QpuBs2+QUjJl/C9nteIBUa00"',
+	    'Accept': '*/*',
+	    'User-Agent': 'com.tappz.aichat/1.2.2 iPhone/15.6.1 hw/iPhone8_2',
+	    'Content-Type': 'application/json',
+	    'Accept-Language': 'en-GB,en;q=0.9'}
+	    
+  		data = {
+	    'data': {
+	        'message':ch,
+	    }
+	}   
+  		response = requests.post(url, headers=head, data=json.dumps(data))
+  		try:
+  			result = response.json()["result"]["choices"][0]["text"]
+  			key = types.InlineKeyboardMarkup()
+  			bot.reply_to(message, f"<strong>{result}</strong>",parse_mode="html",reply_markup=key)
+  		except:
+  			key = types.InlineKeyboardMarkup()
+  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)		
+  else:
+  	pass
 
-while True:
-	def zzq():
-		try:
-			bot.polling(none_stop=True)
-		except:
-			zzq()
-	zzq()e": "Create a password at least 6 characters long.", "code": "too_short_password"}]}, "dryrun_passed": false, "username_suggestions": [], "status": "ok", "error_type": "form_validation_error"}""" in r:
-					good+=1
-					tt = f"""
-	Done get User successfully
-	═══════════════════
-	Username : {user}
-	═══════════════════
-	Programmer  : @P_W_7
-	"""
-					bot.send_message(message.chat.id, f"<strong>{tt}</strong>",parse_mode="html",reply_markup=key)
-					
-				else:
-					bad+=1
-					
-				mees = types.InlineKeyboardMarkup(row_width=1)
-				ba12=types.InlineKeyboardButton(f" 📜 Check User Instagram",callback_data='b12')
-				ba8=types.InlineKeyboardButton(f" ⏱️ Add : {add} > {z}",callback_data='b8')
-				ba11=types.InlineKeyboardButton(f" ✅ Good Username : {good}",callback_data='b11')
-				ba10=types.InlineKeyboardButton(f" ❌ Good Username : {bad}",callback_data='b10')
-				ba9=types.InlineKeyboardButton(f" 🔍 check Username : {user}",callback_data='b9')
-				mees.add(ba12,ba8,ba11,ba10,ba9)
-				bot.edit_message_text(chat_id=message.chat.id,message_id=id,text="بدأ صيـد يوزرات انستكرام",parse_mode='markdown',reply_markup=mees)
-				
-				if z == add:
-					bot.send_message(message.chat.id, f"<strong>لقـد انتهاء عدد محاولات الفحـض</strong>",parse_mode="html",reply_markup=key)
-					return
-					
-		else:
-			bot.send_message(message.chat.id, f"<strong>لا يمكن فحص اكثـر من 2000 😒</strong>",parse_mode="html",reply_markup=key)			
-	except:
-		bot.send_message(message.chat.id, f"<strong>هنـاك خطـأ ما </strong>",parse_mode="html",reply_markup=key)
-				
-						
-@bot.message_handler(commands=["info"])
-def inf(message):
-    global zzk
-    zzk+=1
-    zxu = datetime.datetime.now()
-    nm = message.from_user.first_name
-    id2 = message.from_user.id
-    userk = message.from_user.username
-    bio = bot.get_chat(message.from_user.id).bio
-    
-    ttg=f'''
-رتبتك هي عضو 🥰 
-ـــــــــــــــــــــــــــــــــــــــ
-اسم المستخدم : {nm}
-يوزر المستخدم : @{userk}
-ايدي المستخدم : {id2}
-رقم المستخدم  : {zzk}
-الوقت : {zxu}
-بايو المستخدم : {bio}
-ـــــــــــــــــــــــــــــــــــــــ
-ـ @P_W_7'''
-    key = types.InlineKeyboardMarkup()
-    bot.send_message(message.chat.id, f"<strong>{ttg}</strong>",parse_mode="html",reply_markup=key) 	
-
-
-while True:
-	def zzq():
-		try:
-			bot.polling(none_stop=True)
-		except:
-			zzq()
-	zzq()
+while True :
+    try:
+        bot.infinity_polling()
+    except Exception as error :
+        time.sleep(3)
