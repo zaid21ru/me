@@ -99,7 +99,7 @@ def re(message):
   	dn=random.choice(gh)
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
-  elif 'زيد'  or 'zaid'in text:
+  elif 'زيد'  or 'zaid' in text:
   	if 'zaid' in text:
   		ch = text.split('zaid ')[1]
   		url = 'https://us-central1-chat-for-chatgpt.cloudfunctions.net/basicUserRequestBeta'
