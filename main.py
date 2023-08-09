@@ -86,7 +86,7 @@ def re(message):
   elif 'بوت' in text:
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>احم احد صأحلي بوت؟🕺🏻</strong>",parse_mode="html",reply_markup=key)
-  elif 'جميل' or 'حلو' in text:
+  elif 'حلو' in text:
    	key = types.InlineKeyboardMarkup()
    	bot.reply_to(message, f"<strong>صلِ على محمد والَ محمد</strong>",parse_mode="html",reply_markup=key)
    	
