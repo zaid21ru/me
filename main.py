@@ -3,6 +3,9 @@ import telebot
 from telebot import types
 import random
 import json
+import time
+
+#from server import server
 
 key = types.InlineKeyboardMarkup()
 import datetime
@@ -80,6 +83,13 @@ def re(message):
   		key = types.InlineKeyboardMarkup()
   		bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
 
+  elif 'رفع' in text:
+  	try:
+  		msk='تم رفع'+text.split('رفع')[1]
+  		key = types.InlineKeyboardMarkup()
+  		bot.reply_to(message, f"<strong>{msk}</strong>",parse_mode="html",reply_markup=key)
+  	except:pass
+
   elif 'ابن' in text:
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>نعم انا موجود🤷🏻‍♂️</strong>",parse_mode="html",reply_markup=key)
@@ -97,7 +107,7 @@ def re(message):
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
   elif 'سلفا' in text:
-  	o=['تأج راسك','هسه يجي','لا تصيح على ابي','ابي نأئم','سلفادور عمك','هسه يجي سلفا','شتريد منه ؟','نصي صوت هسه يجي سلفا','لا تلح هسه يرد']
+  	o=['تأج راسك','هسه يجي','لا تصيح على ابي','ابي نأئم','سلفادور عمك','هسه يجي سلفا','شتريد منه ؟','نصي صوت هسه يجي سلفا','لا تلح هسه يرد','تريده يـنـيجك😉','تـنح هسه يجيك']
   	dn=random.choice(o)
   	key = types.InlineKeyboardMarkup()
   	bot.reply_to(message, f"<strong>{dn}</strong>",parse_mode="html",reply_markup=key)
@@ -156,11 +166,14 @@ def re(message):
 	  		except:
 	  			key = types.InlineKeyboardMarkup()
 	  			bot.reply_to(message, f"<strong>لـم افهم ؟</strong>",parse_mode="html",reply_markup=key)
-  		except:pass		
+  		except:pass
+  			
   else:
   	pass
+
+#server()
 while True :
     try:
         bot.infinity_polling()
     except Exception as error :
-        time.sleep(3)
+        time.sleep(2)
